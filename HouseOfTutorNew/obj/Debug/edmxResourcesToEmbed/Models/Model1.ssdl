@@ -1,0 +1,974 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="houseoftutorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="40" />
+    <Property Name="password" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="BlockedTutor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="30" />
+    <Property Name="isBlock" Type="int" />
+  </EntityType>
+  <EntityType Name="ClassReport">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="courseenrolledid" Type="int" />
+    <Property Name="classesstatus" Type="int" />
+    <Property Name="classdate" Type="varchar" MaxLength="50" />
+    <Property Name="classslot" Type="varchar" MaxLength="50" />
+    <Property Name="classtime" Type="varchar" MaxLength="50" />
+    <Property Name="classTakenDate" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="courseid" />
+    </Key>
+    <Property Name="courseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="coursecode" Type="varchar" MaxLength="30" />
+    <Property Name="coursename" Type="varchar" MaxLength="50" />
+    <Property Name="coursefee" Type="int" />
+    <Property Name="coursefullname" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="CourseEnrolled">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentemail" Type="varchar" MaxLength="30" />
+    <Property Name="tutoremail" Type="varchar" MaxLength="30" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="schedule" Type="varchar(max)" />
+    <Property Name="coursestatus" Type="int" />
+    <Property Name="date" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Fee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentemail" Type="varchar" MaxLength="30" />
+    <Property Name="tutoremail" Type="varchar" MaxLength="30" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="courseenrolledid" Type="int" />
+    <Property Name="amount" Type="int" />
+    <Property Name="feestatus" Type="int" />
+  </EntityType>
+  <EntityType Name="Feenew">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="courseenrolledid" Type="int" />
+    <Property Name="totalamount" Type="int" />
+    <Property Name="paidamount" Type="int" />
+    <Property Name="paid" Type="int" />
+    <Property Name="remainingamount" Type="int" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="NewReschedule">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="classreportid" Type="int" />
+    <Property Name="rescheduledclassstatus" Type="int" />
+    <Property Name="rescheduleclassFrom" Type="varchar" MaxLength="50" />
+    <Property Name="rescheduleclassTo" Type="varchar" MaxLength="50" />
+    <Property Name="slotFrom" Type="int" />
+    <Property Name="slotTo" Type="int" />
+    <Property Name="classStatus" Type="int" />
+  </EntityType>
+  <EntityType Name="Rate">
+    <Key>
+      <PropertyRef Name="studentemail" />
+      <PropertyRef Name="tutoremail" />
+      <PropertyRef Name="courseid" />
+    </Key>
+    <Property Name="studentemail" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="tutoremail" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="courseid" Type="int" Nullable="false" />
+    <Property Name="rating" Type="float" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar(max)" />
+    <Property Name="ardiNo" Type="varchar" MaxLength="20" />
+    <Property Name="semesterId" Type="int" />
+    <Property Name="grade" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="scheduleid" />
+    </Key>
+    <Property Name="scheduleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="details" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ScheduleChangeRequest">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tutoremail" Type="varchar" MaxLength="50" />
+    <Property Name="studentemail" Type="varchar" MaxLength="50" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="slotTo" Type="varchar" MaxLength="50" />
+    <Property Name="slotFrom" Type="varchar" MaxLength="50" />
+    <Property Name="enrollDate" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityType Name="SemesterCourse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="semesterNo" Type="int" />
+    <Property Name="courseid" Type="int" />
+  </EntityType>
+  <EntityType Name="settings">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="30" />
+    <Property Name="showClassReport" Type="int" />
+    <Property Name="showAbsents" Type="int" />
+    <Property Name="showRescheduleTutor" Type="int" />
+    <Property Name="showRescheduleStudent" Type="int" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="40" />
+    <Property Name="password" Type="varchar" MaxLength="40" />
+    <Property Name="semester" Type="int" />
+    <Property Name="contact" Type="varchar" MaxLength="15" />
+    <Property Name="cgpa" Type="float" />
+    <Property Name="image" Type="varchar(max)" />
+    <Property Name="gender" Type="varchar" MaxLength="10" />
+    <Property Name="fathercnic" Type="varchar" MaxLength="15" />
+    <Property Name="scheduleid" Type="int" />
+  </EntityType>
+  <EntityType Name="StudentCourseList">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="studentemail" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="studentNotification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="30" />
+    <Property Name="notificationType" Type="int" />
+    <Property Name="isRead" Type="int" />
+    <Property Name="notificationMsg" Type="varchar(max)" />
+    <Property Name="notificationReply" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="StudentRequest">
+    <Key>
+      <PropertyRef Name="studentemail" />
+      <PropertyRef Name="tutoremail" />
+      <PropertyRef Name="courseid" />
+    </Key>
+    <Property Name="studentemail" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="tutoremail" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="courseid" Type="int" Nullable="false" />
+    <Property Name="studentrequeststatus" Type="int" />
+    <Property Name="slot" Type="nvarchar" MaxLength="50" />
+    <Property Name="requestDate" Type="varchar(max)" />
+    <Property Name="requestTime" Type="varchar" MaxLength="50" />
+    <Property Name="dateToBeEnrolled" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="StudentRequestTemporaryEnrollment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentemail" Type="varchar" MaxLength="30" />
+    <Property Name="tutoremail" Type="varchar" MaxLength="30" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="studentrequeststatus" Type="int" />
+    <Property Name="slot" Type="varchar" MaxLength="100" />
+    <Property Name="requestDate" Type="varchar(max)" />
+    <Property Name="requestTime" Type="varchar(max)" />
+    <Property Name="dateToBeEnrolled" Type="varchar(max)" />
+    <Property Name="dateToEnd" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="SubjectFeeGroupNames">
+    <Key>
+      <PropertyRef Name="groupId" />
+    </Key>
+    <Property Name="groupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="groupName" Type="varchar" MaxLength="30" />
+    <Property Name="fee" Type="int" />
+  </EntityType>
+  <EntityType Name="SubjectGroupNames">
+    <Key>
+      <PropertyRef Name="groupid" />
+    </Key>
+    <Property Name="groupid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="groupName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SubjectGroups">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="coursename" Type="varchar" MaxLength="10" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="groupid" Type="int" />
+  </EntityType>
+  <EntityType Name="TemporaryEnrolled">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentemail" Type="varchar" MaxLength="30" />
+    <Property Name="tutoremail" Type="varchar" MaxLength="30" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="schedule" Type="varchar(max)" />
+    <Property Name="coursestatus" Type="int" />
+    <Property Name="date" Type="varchar(max)" />
+    <Property Name="dateToEnd" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TempTakeClass">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tempId" Type="int" />
+    <Property Name="classesstatus" Type="int" />
+    <Property Name="classdate" Type="varchar(max)" />
+    <Property Name="classslot" Type="varchar(max)" />
+    <Property Name="classtime" Type="varchar(max)" />
+    <Property Name="classTakenDate" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TempTakeClasses">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tempId" Type="int" />
+    <Property Name="classesstatus" Type="int" />
+    <Property Name="classdate" Type="varchar(max)" />
+    <Property Name="classslot" Type="varchar(max)" />
+    <Property Name="classtime" Type="varchar(max)" />
+    <Property Name="classTakenDate" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Tutor">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="40" />
+    <Property Name="password" Type="varchar" MaxLength="40" />
+    <Property Name="semester" Type="int" />
+    <Property Name="contact" Type="varchar" MaxLength="15" />
+    <Property Name="cgpa" Type="float" />
+    <Property Name="image" Type="varchar(max)" />
+    <Property Name="gender" Type="varchar" MaxLength="10" />
+    <Property Name="scheduleid" Type="int" />
+  </EntityType>
+  <EntityType Name="TutorCourseList">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="courseid" Type="int" />
+    <Property Name="tutoremail" Type="varchar" MaxLength="30" />
+    <Property Name="isSelected" Type="varchar" MaxLength="5" />
+    <Property Name="type" Type="int" />
+  </EntityType>
+  <EntityType Name="tutorNotification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="30" />
+    <Property Name="notificationType" Type="int" />
+    <Property Name="isRead" Type="int" />
+    <Property Name="notificationMsg" Type="varchar(max)" />
+    <Property Name="notificationReply" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="TutorRequest">
+    <Key>
+      <PropertyRef Name="tutoremail" />
+      <PropertyRef Name="courseid" />
+    </Key>
+    <Property Name="tutoremail" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="courseid" Type="int" Nullable="false" />
+    <Property Name="tutorrequeststatus" Type="int" />
+  </EntityType>
+  <Association Name="FK__BlockedTu__email__114A936A">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="0..1" />
+    <End Role="BlockedTutor" Type="Self.BlockedTutor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="BlockedTutor">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClassRepo__cours__403A8C7D">
+    <End Role="CourseEnrolled" Type="Self.CourseEnrolled" Multiplicity="0..1" />
+    <End Role="ClassReport" Type="Self.ClassReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseEnrolled">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ClassReport">
+        <PropertyRef Name="courseenrolledid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseEnr__cours__3B75D760">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="CourseEnrolled" Type="Self.CourseEnrolled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="courseid" />
+      </Principal>
+      <Dependent Role="CourseEnrolled">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseEnr__stude__398D8EEE">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="CourseEnrolled" Type="Self.CourseEnrolled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="CourseEnrolled">
+        <PropertyRef Name="studentemail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseEnr__tutor__3A81B327">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="0..1" />
+    <End Role="CourseEnrolled" Type="Self.CourseEnrolled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="CourseEnrolled">
+        <PropertyRef Name="tutoremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fee__courseenrol__4CA06362">
+    <End Role="CourseEnrolled" Type="Self.CourseEnrolled" Multiplicity="0..1" />
+    <End Role="Fee" Type="Self.Fee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseEnrolled">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Fee">
+        <PropertyRef Name="courseenrolledid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fee__courseid__4BAC3F29">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Fee" Type="Self.Fee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="courseid" />
+      </Principal>
+      <Dependent Role="Fee">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fee__studentemai__49C3F6B7">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Fee" Type="Self.Fee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Fee">
+        <PropertyRef Name="studentemail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fee__tutoremail__4AB81AF0">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="0..1" />
+    <End Role="Fee" Type="Self.Fee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Fee">
+        <PropertyRef Name="tutoremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fees__courseenro__160F4887">
+    <End Role="CourseEnrolled" Type="Self.CourseEnrolled" Multiplicity="0..1" />
+    <End Role="Feenew" Type="Self.Feenew" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseEnrolled">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Feenew">
+        <PropertyRef Name="courseenrolledid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NewResche__class__6754599E">
+    <End Role="ClassReport" Type="Self.ClassReport" Multiplicity="0..1" />
+    <End Role="NewReschedule" Type="Self.NewReschedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassReport">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="NewReschedule">
+        <PropertyRef Name="classreportid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rate__courseid__1CF15040">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="courseid" />
+      </Principal>
+      <Dependent Role="Rate">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rate__studentema__1B0907CE">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Rate">
+        <PropertyRef Name="studentemail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rate__tutoremail__1BFD2C07">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+    <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Rate">
+        <PropertyRef Name="tutoremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result__semester__797309D9">
+    <End Role="SemesterCourse" Type="Self.SemesterCourse" Multiplicity="0..1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SemesterCourse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="semesterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SemesterC__cours__74AE54BC">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="SemesterCourse" Type="Self.SemesterCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="courseid" />
+      </Principal>
+      <Dependent Role="SemesterCourse">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__settings__email__0C85DE4D">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="settings" Type="Self.settings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="settings">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__schedul__117F9D94">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="scheduleid" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="scheduleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentCo__cours__33D4B598">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="StudentCourseList" Type="Self.StudentCourseList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="courseid" />
+      </Principal>
+      <Dependent Role="StudentCourseList">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentCo__stude__34C8D9D1">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="StudentCourseList" Type="Self.StudentCourseList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="StudentCourseList">
+        <PropertyRef Name="studentemail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__studentNo__email__02FC7413">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="studentNotification" Type="Self.studentNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="studentNotification">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentRe__cours__239E4DCF">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="StudentRequest" Type="Self.StudentRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="courseid" />
+      </Principal>
+      <Dependent Role="StudentRequest">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentRe__cours__2BFE89A6">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="StudentRequestTemporaryEnrollment" Type="Self.StudentRequestTemporaryEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="courseid" />
+      </Principal>
+      <Dependent Role="StudentRequestTemporaryEnrollment">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentRe__stude__21B6055D">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentRequest" Type="Self.StudentRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="StudentRequest">
+        <PropertyRef Name="studentemail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentRe__stude__2A164134">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="StudentRequestTemporaryEnrollment" Type="Self.StudentRequestTemporaryEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="StudentRequestTemporaryEnrollment">
+        <PropertyRef Name="studentemail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentRe__tutor__22AA2996">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+    <End Role="StudentRequest" Type="Self.StudentRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="StudentRequest">
+        <PropertyRef Name="tutoremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentRe__tutor__2B0A656D">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="0..1" />
+    <End Role="StudentRequestTemporaryEnrollment" Type="Self.StudentRequestTemporaryEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="StudentRequestTemporaryEnrollment">
+        <PropertyRef Name="tutoremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SubjectGr__group__5DCAEF64">
+    <End Role="SubjectGroupNames" Type="Self.SubjectGroupNames" Multiplicity="0..1" />
+    <End Role="SubjectGroups" Type="Self.SubjectGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectGroupNames">
+        <PropertyRef Name="groupid" />
+      </Principal>
+      <Dependent Role="SubjectGroups">
+        <PropertyRef Name="groupid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Temporary__cours__25518C17">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="TemporaryEnrolled" Type="Self.TemporaryEnrolled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="courseid" />
+      </Principal>
+      <Dependent Role="TemporaryEnrolled">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Temporary__stude__236943A5">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="TemporaryEnrolled" Type="Self.TemporaryEnrolled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="TemporaryEnrolled">
+        <PropertyRef Name="studentemail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Temporary__tutor__245D67DE">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="0..1" />
+    <End Role="TemporaryEnrolled" Type="Self.TemporaryEnrolled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="TemporaryEnrolled">
+        <PropertyRef Name="tutoremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TempTakeC__tempI__30C33EC3">
+    <End Role="TemporaryEnrolled" Type="Self.TemporaryEnrolled" Multiplicity="0..1" />
+    <End Role="TempTakeClasses" Type="Self.TempTakeClasses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TemporaryEnrolled">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TempTakeClasses">
+        <PropertyRef Name="tempId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TempTakeC__tempI__3587F3E0">
+    <End Role="TemporaryEnrolled" Type="Self.TemporaryEnrolled" Multiplicity="0..1" />
+    <End Role="TempTakeClass" Type="Self.TempTakeClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TemporaryEnrolled">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TempTakeClass">
+        <PropertyRef Name="tempId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tutor__schedulei__164452B1">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="scheduleid" />
+      </Principal>
+      <Dependent Role="Tutor">
+        <PropertyRef Name="scheduleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TutorCour__cours__2E1BDC42">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="TutorCourseList" Type="Self.TutorCourseList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="courseid" />
+      </Principal>
+      <Dependent Role="TutorCourseList">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TutorCour__tutor__2F10007B">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="0..1" />
+    <End Role="TutorCourseList" Type="Self.TutorCourseList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="TutorCourseList">
+        <PropertyRef Name="tutoremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tutorNoti__email__07C12930">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="0..1" />
+    <End Role="tutorNotification" Type="Self.tutorNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="tutorNotification">
+        <PropertyRef Name="email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TutorRequ__cours__29572725">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="TutorRequest" Type="Self.TutorRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="courseid" />
+      </Principal>
+      <Dependent Role="TutorRequest">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TutorRequ__tutor__286302EC">
+    <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+    <End Role="TutorRequest" Type="Self.TutorRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutor">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="TutorRequest">
+        <PropertyRef Name="tutoremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="houseoftutorModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BlockedTutor" EntityType="Self.BlockedTutor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClassReport" EntityType="Self.ClassReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CourseEnrolled" EntityType="Self.CourseEnrolled" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fee" EntityType="Self.Fee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feenew" EntityType="Self.Feenew" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NewReschedule" EntityType="Self.NewReschedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleChangeRequest" EntityType="Self.ScheduleChangeRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SemesterCourse" EntityType="Self.SemesterCourse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentCourseList" EntityType="Self.StudentCourseList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="studentNotification" EntityType="Self.studentNotification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentRequest" EntityType="Self.StudentRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentRequestTemporaryEnrollment" EntityType="Self.StudentRequestTemporaryEnrollment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectFeeGroupNames" EntityType="Self.SubjectFeeGroupNames" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectGroupNames" EntityType="Self.SubjectGroupNames" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectGroups" EntityType="Self.SubjectGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TemporaryEnrolled" EntityType="Self.TemporaryEnrolled" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TempTakeClass" EntityType="Self.TempTakeClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TempTakeClasses" EntityType="Self.TempTakeClasses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tutor" EntityType="Self.Tutor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TutorCourseList" EntityType="Self.TutorCourseList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tutorNotification" EntityType="Self.tutorNotification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TutorRequest" EntityType="Self.TutorRequest" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BlockedTu__email__114A936A" Association="Self.FK__BlockedTu__email__114A936A">
+      <End Role="Tutor" EntitySet="Tutor" />
+      <End Role="BlockedTutor" EntitySet="BlockedTutor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClassRepo__cours__403A8C7D" Association="Self.FK__ClassRepo__cours__403A8C7D">
+      <End Role="CourseEnrolled" EntitySet="CourseEnrolled" />
+      <End Role="ClassReport" EntitySet="ClassReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseEnr__cours__3B75D760" Association="Self.FK__CourseEnr__cours__3B75D760">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="CourseEnrolled" EntitySet="CourseEnrolled" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseEnr__stude__398D8EEE" Association="Self.FK__CourseEnr__stude__398D8EEE">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="CourseEnrolled" EntitySet="CourseEnrolled" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseEnr__tutor__3A81B327" Association="Self.FK__CourseEnr__tutor__3A81B327">
+      <End Role="Tutor" EntitySet="Tutor" />
+      <End Role="CourseEnrolled" EntitySet="CourseEnrolled" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fee__courseenrol__4CA06362" Association="Self.FK__Fee__courseenrol__4CA06362">
+      <End Role="CourseEnrolled" EntitySet="CourseEnrolled" />
+      <End Role="Fee" EntitySet="Fee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fee__courseid__4BAC3F29" Association="Self.FK__Fee__courseid__4BAC3F29">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Fee" EntitySet="Fee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fee__studentemai__49C3F6B7" Association="Self.FK__Fee__studentemai__49C3F6B7">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Fee" EntitySet="Fee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fee__tutoremail__4AB81AF0" Association="Self.FK__Fee__tutoremail__4AB81AF0">
+      <End Role="Tutor" EntitySet="Tutor" />
+      <End Role="Fee" EntitySet="Fee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fees__courseenro__160F4887" Association="Self.FK__Fees__courseenro__160F4887">
+      <End Role="CourseEnrolled" EntitySet="CourseEnrolled" />
+      <End Role="Feenew" EntitySet="Feenew" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NewResche__class__6754599E" Association="Self.FK__NewResche__class__6754599E">
+      <End Role="ClassReport" EntitySet="ClassReport" />
+      <End Role="NewReschedule" EntitySet="NewReschedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rate__courseid__1CF15040" Association="Self.FK__Rate__courseid__1CF15040">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Rate" EntitySet="Rate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rate__studentema__1B0907CE" Association="Self.FK__Rate__studentema__1B0907CE">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Rate" EntitySet="Rate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rate__tutoremail__1BFD2C07" Association="Self.FK__Rate__tutoremail__1BFD2C07">
+      <End Role="Tutor" EntitySet="Tutor" />
+      <End Role="Rate" EntitySet="Rate" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result__semester__797309D9" Association="Self.FK__Result__semester__797309D9">
+      <End Role="SemesterCourse" EntitySet="SemesterCourse" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SemesterC__cours__74AE54BC" Association="Self.FK__SemesterC__cours__74AE54BC">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="SemesterCourse" EntitySet="SemesterCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK__settings__email__0C85DE4D" Association="Self.FK__settings__email__0C85DE4D">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="settings" EntitySet="settings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__schedul__117F9D94" Association="Self.FK__Student__schedul__117F9D94">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentCo__cours__33D4B598" Association="Self.FK__StudentCo__cours__33D4B598">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="StudentCourseList" EntitySet="StudentCourseList" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentCo__stude__34C8D9D1" Association="Self.FK__StudentCo__stude__34C8D9D1">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentCourseList" EntitySet="StudentCourseList" />
+    </AssociationSet>
+    <AssociationSet Name="FK__studentNo__email__02FC7413" Association="Self.FK__studentNo__email__02FC7413">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="studentNotification" EntitySet="studentNotification" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentRe__cours__239E4DCF" Association="Self.FK__StudentRe__cours__239E4DCF">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="StudentRequest" EntitySet="StudentRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentRe__cours__2BFE89A6" Association="Self.FK__StudentRe__cours__2BFE89A6">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="StudentRequestTemporaryEnrollment" EntitySet="StudentRequestTemporaryEnrollment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentRe__stude__21B6055D" Association="Self.FK__StudentRe__stude__21B6055D">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentRequest" EntitySet="StudentRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentRe__stude__2A164134" Association="Self.FK__StudentRe__stude__2A164134">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentRequestTemporaryEnrollment" EntitySet="StudentRequestTemporaryEnrollment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentRe__tutor__22AA2996" Association="Self.FK__StudentRe__tutor__22AA2996">
+      <End Role="Tutor" EntitySet="Tutor" />
+      <End Role="StudentRequest" EntitySet="StudentRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentRe__tutor__2B0A656D" Association="Self.FK__StudentRe__tutor__2B0A656D">
+      <End Role="Tutor" EntitySet="Tutor" />
+      <End Role="StudentRequestTemporaryEnrollment" EntitySet="StudentRequestTemporaryEnrollment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SubjectGr__group__5DCAEF64" Association="Self.FK__SubjectGr__group__5DCAEF64">
+      <End Role="SubjectGroupNames" EntitySet="SubjectGroupNames" />
+      <End Role="SubjectGroups" EntitySet="SubjectGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Temporary__cours__25518C17" Association="Self.FK__Temporary__cours__25518C17">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="TemporaryEnrolled" EntitySet="TemporaryEnrolled" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Temporary__stude__236943A5" Association="Self.FK__Temporary__stude__236943A5">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="TemporaryEnrolled" EntitySet="TemporaryEnrolled" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Temporary__tutor__245D67DE" Association="Self.FK__Temporary__tutor__245D67DE">
+      <End Role="Tutor" EntitySet="Tutor" />
+      <End Role="TemporaryEnrolled" EntitySet="TemporaryEnrolled" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TempTakeC__tempI__30C33EC3" Association="Self.FK__TempTakeC__tempI__30C33EC3">
+      <End Role="TemporaryEnrolled" EntitySet="TemporaryEnrolled" />
+      <End Role="TempTakeClasses" EntitySet="TempTakeClasses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TempTakeC__tempI__3587F3E0" Association="Self.FK__TempTakeC__tempI__3587F3E0">
+      <End Role="TemporaryEnrolled" EntitySet="TemporaryEnrolled" />
+      <End Role="TempTakeClass" EntitySet="TempTakeClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tutor__schedulei__164452B1" Association="Self.FK__Tutor__schedulei__164452B1">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="Tutor" EntitySet="Tutor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TutorCour__cours__2E1BDC42" Association="Self.FK__TutorCour__cours__2E1BDC42">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="TutorCourseList" EntitySet="TutorCourseList" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TutorCour__tutor__2F10007B" Association="Self.FK__TutorCour__tutor__2F10007B">
+      <End Role="Tutor" EntitySet="Tutor" />
+      <End Role="TutorCourseList" EntitySet="TutorCourseList" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tutorNoti__email__07C12930" Association="Self.FK__tutorNoti__email__07C12930">
+      <End Role="Tutor" EntitySet="Tutor" />
+      <End Role="tutorNotification" EntitySet="tutorNotification" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TutorRequ__cours__29572725" Association="Self.FK__TutorRequ__cours__29572725">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="TutorRequest" EntitySet="TutorRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TutorRequ__tutor__286302EC" Association="Self.FK__TutorRequ__tutor__286302EC">
+      <End Role="Tutor" EntitySet="Tutor" />
+      <End Role="TutorRequest" EntitySet="TutorRequest" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

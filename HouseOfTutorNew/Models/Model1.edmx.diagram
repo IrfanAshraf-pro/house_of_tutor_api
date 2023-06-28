@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="960d2dfea7224f2095d3f663fc0f71f8" Name="Diagram1">
+        <EntityTypeShape EntityType="houseoftutorModel.Admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.ClassReport" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.Course" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.CourseEnrolled" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.Fee" Width="1.5" PointX="10.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.NewReschedule" Width="1.5" PointX="9.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.Rate" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.Schedule" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.Student" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.StudentCourseList" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.StudentRequest" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.SubjectGroupName" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.SubjectGroup" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.Tutor" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseoftutorModel.TutorRequest" Width="1.5" PointX="8.25" PointY="18.25" IsExpanded="true" />
+        <AssociationConnector Association="houseoftutorModel.FK__ClassRepo__cours__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__NewResche__class__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__CourseEnr__cours__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__Fee__courseid__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__Rate__courseid__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__StudentCo__cours__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__StudentRe__cours__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__TutorRequ__cours__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__CourseEnr__stude__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__CourseEnr__tutor__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__Fee__courseenrol__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__Fee__studentemai__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__Fee__tutoremail__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__Rate__studentema__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__Rate__tutoremail__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__Student__schedul__117F9D94" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__Tutor__schedulei__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__StudentCo__stude__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__StudentRe__stude__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__StudentRe__tutor__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__SubjectGr__group__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="houseoftutorModel.FK__TutorRequ__tutor__286302EC" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="houseoftutorModel.SubjectFeeGroupName" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="houseoftutorModel.Result" Width="1.5" PointX="7.5" PointY="21.5" />
+        <EntityTypeShape EntityType="houseoftutorModel.SemesterCourse" Width="1.5" PointX="5.25" PointY="21.5" />
+        <EntityTypeShape EntityType="houseoftutorModel.studentNotification" Width="1.5" PointX="5.25" PointY="24.375" />
+        <EntityTypeShape EntityType="houseoftutorModel.tutorNotification" Width="1.5" PointX="5.25" PointY="28.25" />
+        <AssociationConnector Association="houseoftutorModel.FK__SemesterC__cours__74AE54BC" />
+        <AssociationConnector Association="houseoftutorModel.FK__Result__semester__797309D9" />
+        <AssociationConnector Association="houseoftutorModel.FK__studentNo__email__02FC7413" />
+        <AssociationConnector Association="houseoftutorModel.FK__tutorNoti__email__07C12930" />
+        <EntityTypeShape EntityType="houseoftutorModel.TutorCourseList" Width="1.5" PointX="8.25" PointY="3.5" />
+        <AssociationConnector Association="houseoftutorModel.FK__TutorCour__cours__2E1BDC42" />
+        <AssociationConnector Association="houseoftutorModel.FK__TutorCour__tutor__2F10007B" />
+        <EntityTypeShape EntityType="houseoftutorModel.setting" Width="1.5" PointX="5.25" PointY="31.375" />
+        <AssociationConnector Association="houseoftutorModel.FK__settings__email__0C85DE4D" />
+        <EntityTypeShape EntityType="houseoftutorModel.BlockedTutor" Width="1.5" PointX="5.25" PointY="34.625" />
+        <AssociationConnector Association="houseoftutorModel.FK__BlockedTu__email__114A936A" />
+        <EntityTypeShape EntityType="houseoftutorModel.Feenew" Width="1.5" PointX="7.5" PointY="24.75" />
+        <AssociationConnector Association="houseoftutorModel.FK__Fees__courseenro__160F4887" />
+        <EntityTypeShape EntityType="houseoftutorModel.ScheduleChangeRequest" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="houseoftutorModel.TemporaryEnrolled" Width="1.5" PointX="11.25" PointY="15.375" />
+        <AssociationConnector Association="houseoftutorModel.FK__Temporary__cours__25518C17" />
+        <AssociationConnector Association="houseoftutorModel.FK__Temporary__stude__236943A5" />
+        <AssociationConnector Association="houseoftutorModel.FK__Temporary__tutor__245D67DE" />
+        <EntityTypeShape EntityType="houseoftutorModel.StudentRequestTemporaryEnrollment" Width="1.5" PointX="12.25" PointY="6.25" />
+        <AssociationConnector Association="houseoftutorModel.FK__StudentRe__cours__2BFE89A6" />
+        <AssociationConnector Association="houseoftutorModel.FK__StudentRe__stude__2A164134" />
+        <AssociationConnector Association="houseoftutorModel.FK__StudentRe__tutor__2B0A656D" />
+        <EntityTypeShape EntityType="houseoftutorModel.TempTakeClass" Width="1.5" PointX="13.5" PointY="15.75" />
+        <AssociationConnector Association="houseoftutorModel.FK__TempTakeC__tempI__30C33EC3" />
+        <EntityTypeShape EntityType="houseoftutorModel.TempTakeClass1" Width="1.5" PointX="13.5" PointY="19.875" />
+        <AssociationConnector Association="houseoftutorModel.FK__TempTakeC__tempI__3587F3E0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

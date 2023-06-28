@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="houseoftutorModelStoreContainer" CdmEntityContainer="houseoftutorEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="houseoftutorModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassReports">
+      <EntityTypeMapping TypeName="houseoftutorModel.ClassReport">
+        <MappingFragment StoreEntitySet="ClassReport">
+          <ScalarProperty Name="classTakenDate" ColumnName="classTakenDate" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="courseenrolledid" ColumnName="courseenrolledid" />
+          <ScalarProperty Name="classesstatus" ColumnName="classesstatus" />
+          <ScalarProperty Name="classdate" ColumnName="classdate" />
+          <ScalarProperty Name="classslot" ColumnName="classslot" />
+          <ScalarProperty Name="classtime" ColumnName="classtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="houseoftutorModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="coursefullname" ColumnName="coursefullname" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="coursecode" ColumnName="coursecode" />
+          <ScalarProperty Name="coursename" ColumnName="coursename" />
+          <ScalarProperty Name="coursefee" ColumnName="coursefee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseEnrolleds">
+      <EntityTypeMapping TypeName="houseoftutorModel.CourseEnrolled">
+        <MappingFragment StoreEntitySet="CourseEnrolled">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="studentemail" ColumnName="studentemail" />
+          <ScalarProperty Name="tutoremail" ColumnName="tutoremail" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="schedule" ColumnName="schedule" />
+          <ScalarProperty Name="coursestatus" ColumnName="coursestatus" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fees">
+      <EntityTypeMapping TypeName="houseoftutorModel.Fee">
+        <MappingFragment StoreEntitySet="Fee">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="studentemail" ColumnName="studentemail" />
+          <ScalarProperty Name="tutoremail" ColumnName="tutoremail" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="courseenrolledid" ColumnName="courseenrolledid" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="feestatus" ColumnName="feestatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewReschedules">
+      <EntityTypeMapping TypeName="houseoftutorModel.NewReschedule">
+        <MappingFragment StoreEntitySet="NewReschedule">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="classreportid" ColumnName="classreportid" />
+          <ScalarProperty Name="rescheduledclassstatus" ColumnName="rescheduledclassstatus" />
+          <ScalarProperty Name="rescheduleclassFrom" ColumnName="rescheduleclassFrom" />
+          <ScalarProperty Name="rescheduleclassTo" ColumnName="rescheduleclassTo" />
+          <ScalarProperty Name="slotFrom" ColumnName="slotFrom" />
+          <ScalarProperty Name="slotTo" ColumnName="slotTo" />
+          <ScalarProperty Name="classStatus" ColumnName="classStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rates">
+      <EntityTypeMapping TypeName="houseoftutorModel.Rate">
+        <MappingFragment StoreEntitySet="Rate">
+          <ScalarProperty Name="studentemail" ColumnName="studentemail" />
+          <ScalarProperty Name="tutoremail" ColumnName="tutoremail" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="houseoftutorModel.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="scheduleid" ColumnName="scheduleid" />
+          <ScalarProperty Name="details" ColumnName="details" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="houseoftutorModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="semester" ColumnName="semester" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="cgpa" ColumnName="cgpa" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="fathercnic" ColumnName="fathercnic" />
+          <ScalarProperty Name="scheduleid" ColumnName="scheduleid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentCourseLists">
+      <EntityTypeMapping TypeName="houseoftutorModel.StudentCourseList">
+        <MappingFragment StoreEntitySet="StudentCourseList">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="studentemail" ColumnName="studentemail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentRequests">
+      <EntityTypeMapping TypeName="houseoftutorModel.StudentRequest">
+        <MappingFragment StoreEntitySet="StudentRequest">
+          <ScalarProperty Name="dateToBeEnrolled" ColumnName="dateToBeEnrolled" />
+          <ScalarProperty Name="requestTime" ColumnName="requestTime" />
+          <ScalarProperty Name="studentemail" ColumnName="studentemail" />
+          <ScalarProperty Name="tutoremail" ColumnName="tutoremail" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="studentrequeststatus" ColumnName="studentrequeststatus" />
+          <ScalarProperty Name="slot" ColumnName="slot" />
+          <ScalarProperty Name="requestDate" ColumnName="requestDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectGroupNames">
+      <EntityTypeMapping TypeName="houseoftutorModel.SubjectGroupName">
+        <MappingFragment StoreEntitySet="SubjectGroupNames">
+          <ScalarProperty Name="groupid" ColumnName="groupid" />
+          <ScalarProperty Name="groupName" ColumnName="groupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectGroups">
+      <EntityTypeMapping TypeName="houseoftutorModel.SubjectGroup">
+        <MappingFragment StoreEntitySet="SubjectGroups">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="coursename" ColumnName="coursename" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="groupid" ColumnName="groupid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tutors">
+      <EntityTypeMapping TypeName="houseoftutorModel.Tutor">
+        <MappingFragment StoreEntitySet="Tutor">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="semester" ColumnName="semester" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="cgpa" ColumnName="cgpa" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="scheduleid" ColumnName="scheduleid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TutorRequests">
+      <EntityTypeMapping TypeName="houseoftutorModel.TutorRequest">
+        <MappingFragment StoreEntitySet="TutorRequest">
+          <ScalarProperty Name="tutoremail" ColumnName="tutoremail" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="tutorrequeststatus" ColumnName="tutorrequeststatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectFeeGroupNames">
+      <EntityTypeMapping TypeName="houseoftutorModel.SubjectFeeGroupName">
+        <MappingFragment StoreEntitySet="SubjectFeeGroupNames">
+          <ScalarProperty Name="fee" ColumnName="fee" />
+          <ScalarProperty Name="groupName" ColumnName="groupName" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="houseoftutorModel.Result">
+        <MappingFragment StoreEntitySet="Result">
+          <ScalarProperty Name="grade" ColumnName="grade" />
+          <ScalarProperty Name="semesterId" ColumnName="semesterId" />
+          <ScalarProperty Name="ardiNo" ColumnName="ardiNo" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SemesterCourses">
+      <EntityTypeMapping TypeName="houseoftutorModel.SemesterCourse">
+        <MappingFragment StoreEntitySet="SemesterCourse">
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="semesterNo" ColumnName="semesterNo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="studentNotifications">
+      <EntityTypeMapping TypeName="houseoftutorModel.studentNotification">
+        <MappingFragment StoreEntitySet="studentNotification">
+          <ScalarProperty Name="notificationReply" ColumnName="notificationReply" />
+          <ScalarProperty Name="notificationMsg" ColumnName="notificationMsg" />
+          <ScalarProperty Name="isRead" ColumnName="isRead" />
+          <ScalarProperty Name="notificationType" ColumnName="notificationType" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tutorNotifications">
+      <EntityTypeMapping TypeName="houseoftutorModel.tutorNotification">
+        <MappingFragment StoreEntitySet="tutorNotification">
+          <ScalarProperty Name="notificationReply" ColumnName="notificationReply" />
+          <ScalarProperty Name="notificationMsg" ColumnName="notificationMsg" />
+          <ScalarProperty Name="isRead" ColumnName="isRead" />
+          <ScalarProperty Name="notificationType" ColumnName="notificationType" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TutorCourseLists">
+      <EntityTypeMapping TypeName="houseoftutorModel.TutorCourseList">
+        <MappingFragment StoreEntitySet="TutorCourseList">
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="isSelected" ColumnName="isSelected" />
+          <ScalarProperty Name="tutoremail" ColumnName="tutoremail" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="settings">
+      <EntityTypeMapping TypeName="houseoftutorModel.setting">
+        <MappingFragment StoreEntitySet="settings">
+          <ScalarProperty Name="showRescheduleStudent" ColumnName="showRescheduleStudent" />
+          <ScalarProperty Name="showRescheduleTutor" ColumnName="showRescheduleTutor" />
+          <ScalarProperty Name="showAbsents" ColumnName="showAbsents" />
+          <ScalarProperty Name="showClassReport" ColumnName="showClassReport" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlockedTutors">
+      <EntityTypeMapping TypeName="houseoftutorModel.BlockedTutor">
+        <MappingFragment StoreEntitySet="BlockedTutor">
+          <ScalarProperty Name="isBlock" ColumnName="isBlock" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feenews">
+      <EntityTypeMapping TypeName="houseoftutorModel.Feenew">
+        <MappingFragment StoreEntitySet="Feenew">
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="remainingamount" ColumnName="remainingamount" />
+          <ScalarProperty Name="paidamount" ColumnName="paidamount" />
+          <ScalarProperty Name="totalamount" ColumnName="totalamount" />
+          <ScalarProperty Name="courseenrolledid" ColumnName="courseenrolledid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScheduleChangeRequests">
+      <EntityTypeMapping TypeName="houseoftutorModel.ScheduleChangeRequest">
+        <MappingFragment StoreEntitySet="ScheduleChangeRequest">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="enrollDate" ColumnName="enrollDate" />
+          <ScalarProperty Name="slotFrom" ColumnName="slotFrom" />
+          <ScalarProperty Name="slotTo" ColumnName="slotTo" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="studentemail" ColumnName="studentemail" />
+          <ScalarProperty Name="tutoremail" ColumnName="tutoremail" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TemporaryEnrolleds">
+      <EntityTypeMapping TypeName="houseoftutorModel.TemporaryEnrolled">
+        <MappingFragment StoreEntitySet="TemporaryEnrolled">
+          <ScalarProperty Name="dateToEnd" ColumnName="dateToEnd" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="coursestatus" ColumnName="coursestatus" />
+          <ScalarProperty Name="schedule" ColumnName="schedule" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="tutoremail" ColumnName="tutoremail" />
+          <ScalarProperty Name="studentemail" ColumnName="studentemail" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentRequestTemporaryEnrollments">
+      <EntityTypeMapping TypeName="houseoftutorModel.StudentRequestTemporaryEnrollment">
+        <MappingFragment StoreEntitySet="StudentRequestTemporaryEnrollment">
+          <ScalarProperty Name="dateToEnd" ColumnName="dateToEnd" />
+          <ScalarProperty Name="dateToBeEnrolled" ColumnName="dateToBeEnrolled" />
+          <ScalarProperty Name="requestTime" ColumnName="requestTime" />
+          <ScalarProperty Name="requestDate" ColumnName="requestDate" />
+          <ScalarProperty Name="slot" ColumnName="slot" />
+          <ScalarProperty Name="studentrequeststatus" ColumnName="studentrequeststatus" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="tutoremail" ColumnName="tutoremail" />
+          <ScalarProperty Name="studentemail" ColumnName="studentemail" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempTakeClasses">
+      <EntityTypeMapping TypeName="houseoftutorModel.TempTakeClass">
+        <MappingFragment StoreEntitySet="TempTakeClasses">
+          <ScalarProperty Name="classTakenDate" ColumnName="classTakenDate" />
+          <ScalarProperty Name="classtime" ColumnName="classtime" />
+          <ScalarProperty Name="classslot" ColumnName="classslot" />
+          <ScalarProperty Name="classdate" ColumnName="classdate" />
+          <ScalarProperty Name="classesstatus" ColumnName="classesstatus" />
+          <ScalarProperty Name="tempId" ColumnName="tempId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempTakeClass1">
+      <EntityTypeMapping TypeName="houseoftutorModel.TempTakeClass1">
+        <MappingFragment StoreEntitySet="TempTakeClass">
+          <ScalarProperty Name="classTakenDate" ColumnName="classTakenDate" />
+          <ScalarProperty Name="classtime" ColumnName="classtime" />
+          <ScalarProperty Name="classslot" ColumnName="classslot" />
+          <ScalarProperty Name="classdate" ColumnName="classdate" />
+          <ScalarProperty Name="classesstatus" ColumnName="classesstatus" />
+          <ScalarProperty Name="tempId" ColumnName="tempId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
